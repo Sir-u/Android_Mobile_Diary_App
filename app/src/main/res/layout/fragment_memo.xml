@@ -7,42 +7,41 @@
     android:padding="16dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="630dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="377dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="310dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="TextView" />
+                android:id="@+id/textView3"
+                android:layout_width="323dp"
+                android:layout_height="40dp"
+                android:text=" MEMO"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="30dp" />
 
             <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="B" />
+                android:backgroundTint="#222222"
+                android:text="✍︎"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="627dp"
             android:orientation="vertical">
 
             <GridView
-                android:id="@+id/gridView"
+                android:id="@+id/gridView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/layout1"
@@ -52,10 +51,14 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="#ffeeeeee"
+                android:background="#222222"
                 android:horizontalSpacing="8dp"
                 android:numColumns="2"
-                android:verticalSpacing="8dp" />
+                android:verticalSpacing="8dp">
+
+            </GridView>
         </LinearLayout>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

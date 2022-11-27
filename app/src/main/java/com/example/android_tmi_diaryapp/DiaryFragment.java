@@ -14,7 +14,7 @@ public class DiaryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_diary, container, false);
+        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_calendar, container, false);
 
         return rootview;
     }
