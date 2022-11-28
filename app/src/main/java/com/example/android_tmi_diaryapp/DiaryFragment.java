@@ -8,13 +8,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class DiaryFragment extends Fragment {
+
+    private RecyclerView mCalendarRVView;
+    private CalendarRVAdapter mCalanderRVAdapter;
+    private ArrayList<CalendarItemDTO> mCalendarItems;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        mCalendarRVView = rootview.findViewById(R.id.rv_calendar_container);
+        mCalanderRVAdapter = new CalendarRVAdapter();
+        mCalendarRVView.setAdapter(mCalanderRVAdapter);
 
         return rootview;
     }
