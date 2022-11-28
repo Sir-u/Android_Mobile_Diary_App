@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.7815" />
         <entry key="app/src/main/res/drawable/ic_baseline_sticky_note_2_24.xml" value="0.7815" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.7815" />
-        <entry key="app/src/main/res/layout/activity_calendar_detail.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/activity_calendar_detail.xml" value="0.2663462320963542" />
         <entry key="app/src/main/res/layout/activity_diary_detail.xml" value="0.7979166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.7147318522135417" />
         <entry key="app/src/main/res/layout/calendar_activity.xml" value="0.38753799392097266" />
@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/layout/fragment_diary_sample.xml" value="0.49962615966796875" />
         <entry key="app/src/main/res/layout/fragment_flush.xml" value="0.7979166666666667" />
         <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.5896739130434783" />
+        <entry key="app/src/main/res/layout/fragment_memo_add.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/fragment_memo_sample.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/memo_activity.xml" value="0.5260786433350352" />
         <entry key="app/src/main/res/layout/rv_diary.xml" value="0.7979166666666667" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.7979166666666667" />
