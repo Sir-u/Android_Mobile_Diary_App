@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private DiaryFragment fragmentDiary = new DiaryFragment();
+    private FlushhFragment fragmentFlush = new FlushhFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,12 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.menu_frame_layout, fragmentDiary)
                             .commitAllowingStateLoss();
                     break;
+                case R.id.menu_flush:
+                    transaction
+                        .replace(R.id.menu_frame_layout, fragmentFlush)
+                        .commitAllowingStateLoss();
+                    break;
             }
-
             return true;
         }
     }
