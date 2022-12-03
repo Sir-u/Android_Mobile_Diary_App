@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class DiaryFragment extends Fragment {
+public class CalendarFragment extends Fragment {
 
     private RecyclerView mCalendarRVView;
     private CalendarRVAdapter mCalanderRVAdapter;
@@ -26,6 +26,17 @@ public class DiaryFragment extends Fragment {
         mCalendarRVView = rootview.findViewById(R.id.rv_calendar_container);
         mCalanderRVAdapter = new CalendarRVAdapter();
         mCalendarRVView.setAdapter(mCalanderRVAdapter);
+
+        rootview.findViewById(R.id.btn_goDetail).setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                getParentFragmentManager()
+                        .beginTransaction()
+//                      .hide(R.id.fragment_conainer)
+                        .add(getParentFragmentManager().findFragmentById(R.id.calendar_detail_fragment), "calendar_detail_fragment")
+                        .commitAllowingStateLoss();
+            }
+        });
 
         return rootview;
     }

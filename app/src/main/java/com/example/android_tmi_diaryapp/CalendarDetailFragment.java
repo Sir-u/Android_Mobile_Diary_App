@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DiaryDetailFragment extends Fragment {
+public class CalendarDetailFragment extends Fragment {
 
     @Nullable
     @Override
