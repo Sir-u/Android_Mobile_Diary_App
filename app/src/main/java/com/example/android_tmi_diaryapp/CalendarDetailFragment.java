@@ -10,16 +10,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class CalendarDetailFragment extends Fragment {
+    private ArrayList<CalendarItemDTO> mCalendarItems;
+    private DatabaseHelper mDBHelper;
+    private String mselectedDate;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideBottomNavigaion(true);
+
+        Bundle bundle = getArguments();
+        if(bundle != null) {
+            mselectedDate = bundle.getString("selectedDate");
+        }
     }
 
     @Nullable
@@ -27,10 +38,15 @@ public class CalendarDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_calendar_detail, container, false);
 
+        setInit();
+
+        TextView currentDate = rootview.findViewById(R.id.textview_date);
+        currentDate.setText(mselectedDate); // 현재 선택된 날짜 설정
 
         rootview.findViewById(R.id.btn_saveBack).setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
                 getParentFragmentManager()
                         .beginTransaction()
                         .remove(CalendarDetailFragment.this)
@@ -47,6 +63,11 @@ public class CalendarDetailFragment extends Fragment {
         super.onDestroyView();
         hideBottomNavigaion(false);
         backCalendar();
+    }
+
+    private void setInit() {
+        mDBHelper = new DatabaseHelper(getContext());
+        mCalendarItems = new ArrayList<>();
     }
 
     public void hideBottomNavigaion(Boolean isNavigationHide) {
