@@ -42,10 +42,18 @@ public class CalendarDetailFragment extends Fragment {
 
         TextView currentDate = rootview.findViewById(R.id.textview_date);
         currentDate.setText(mselectedDate); // 현재 선택된 날짜 설정
+        TextView eidtTitle = rootview.findViewById(R.id.edit_title); // 일정 title
+        TextView eidtContent = rootview.findViewById(R.id.edit_content); // 일정 content
 
         rootview.findViewById(R.id.btn_saveBack).setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                mDBHelper.InsertCalendar(eidtTitle.getText().toString(), eidtContent.getText().toString(), mselectedDate); // DB에 인서트
+                CalendarItemDTO item = new CalendarItemDTO();
+                item.setTitle(eidtTitle.getText().toString());
+                item.setContent(eidtContent.getText().toString());
+                item.setDate(mselectedDate);
+                addItem(item);
 
                 getParentFragmentManager()
                         .beginTransaction()
@@ -80,5 +88,10 @@ public class CalendarDetailFragment extends Fragment {
 
     private void backCalendar() {
         ((MainActivity)getActivity()).OnCalendar();
+    }
+
+    // 현재 어뎁터에 새로운 게시물 아이템을 전달받아 추가한다.
+    public void addItem(CalendarItemDTO _item){
+        mCalendarItems.add(0, _item);
     }
 }

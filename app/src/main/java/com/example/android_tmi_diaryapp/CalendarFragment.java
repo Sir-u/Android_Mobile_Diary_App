@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -47,9 +48,6 @@ public class CalendarFragment extends Fragment {
 
         mcalendarView = (CalendarView)rootview.findViewById(R.id.calendarView);
         mCalendarRVView = rootview.findViewById(R.id.rv_calendar_container);
-        mCalanderRVAdapter = new CalendarRVAdapter();
-        mCalendarRVView.setAdapter(mCalanderRVAdapter);
-
         setInit();
 
         mcalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -79,5 +77,30 @@ public class CalendarFragment extends Fragment {
     private void setInit() {
         mDBHelper = new DatabaseHelper(getContext());
         mCalendarItems = new ArrayList<>();
+
+        mDBHelper.InsertCalendar("안드로이드 시험", "안드로이드 기말 시험", mselectedDate); // DB에 인서트
+        CalendarItemDTO item = new CalendarItemDTO();
+        item.setTitle("안드로이드 시험");
+        item.setContent("안드로이드 기말 시험");
+        item.setDate(mselectedDate);
+        addItem(item);
+
+        loadRecentDB();
     }
+
+    private void loadRecentDB() {
+        // 저장되어있던 db를 가져온다.
+        mCalendarItems = mDBHelper.getCalendarItems();
+        if(mCalanderRVAdapter == null) {
+            mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate);
+            mCalendarRVView.setHasFixedSize(true);
+            mCalendarRVView.setAdapter(mCalanderRVAdapter);
+        }
+    }
+
+    public void addItem(CalendarItemDTO _item){
+        mCalendarItems.add(0, _item);
+    }
+
+
 }
