@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private CalendarFragment fragmentDiary = new CalendarFragment();
+    private CalendarFragment fragmentCalendar = new CalendarFragment();
     private FlushhFragment fragmentFlush = new FlushhFragment();
 
     @Override
@@ -21,13 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_conainer, fragmentDiary)
-                .commitAllowingStateLoss();
+        OnCalendar();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_conainer, fragmentDiary).commitAllowingStateLoss();
+        transaction.replace(R.id.fragment_conainer, fragmentCalendar).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
@@ -41,17 +38,24 @@ public class MainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.menu_diary:
                     transaction
-                            .replace(R.id.fragment_conainer, fragmentDiary)
+                            .replace(R.id.fragment_conainer, fragmentCalendar, "fragmentCalendar")
                             .commitAllowingStateLoss();
                     break;
                 case R.id.menu_flush:
                     transaction
-                        .replace(R.id.fragment_conainer, fragmentFlush)
+                        .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
                         .commitAllowingStateLoss();
                     break;
             }
             return true;
         }
+    }
+
+    public void OnCalendar() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, fragmentCalendar)
+                .commitAllowingStateLoss();
     }
 
 }

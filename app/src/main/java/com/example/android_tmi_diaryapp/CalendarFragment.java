@@ -17,6 +17,7 @@ public class CalendarFragment extends Fragment {
     private RecyclerView mCalendarRVView;
     private CalendarRVAdapter mCalanderRVAdapter;
     private ArrayList<CalendarItemDTO> mCalendarItems;
+    private CalendarDetailFragment calendarDetailFragment = new CalendarDetailFragment();
 
     @Nullable
     @Override
@@ -32,8 +33,7 @@ public class CalendarFragment extends Fragment {
             public void onClick(View v) {
                 getParentFragmentManager()
                         .beginTransaction()
-//                      .hide(R.id.fragment_conainer)
-                        .add(getParentFragmentManager().findFragmentById(R.id.calendar_detail_fragment), "calendar_detail_fragment")
+                        .replace(R.id.fragment_conainer, calendarDetailFragment, "calendarDetailFragment")
                         .commitAllowingStateLoss();
             }
         });
