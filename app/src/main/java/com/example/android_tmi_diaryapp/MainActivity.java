@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private DiaryFragment fragmentDiary = new DiaryFragment();
+    private CalendarFragment fragmentDiary = new CalendarFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
