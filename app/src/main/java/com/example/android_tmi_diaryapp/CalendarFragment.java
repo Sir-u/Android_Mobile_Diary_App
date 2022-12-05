@@ -11,6 +11,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment implements CalendarRVAdapter.ItemClickListener{
 
     private RecyclerView mCalendarRVView;
     private CalendarRVAdapter mCalanderRVAdapter;
@@ -48,6 +49,7 @@ public class CalendarFragment extends Fragment {
 
         mcalendarView = (CalendarView)rootview.findViewById(R.id.calendarView);
         mCalendarRVView = rootview.findViewById(R.id.rv_calendar_container);
+
         setInit();
 
         mcalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -78,24 +80,24 @@ public class CalendarFragment extends Fragment {
         mDBHelper = new DatabaseHelper(getContext());
         mCalendarItems = new ArrayList<>();
 
-        mDBHelper.InsertCalendar("안드로이드 시험", "안드로이드 기말 시험", mselectedDate); // DB에 인서트
-        CalendarItemDTO item = new CalendarItemDTO();
-        item.setTitle("안드로이드 시험");
-        item.setContent("안드로이드 기말 시험");
-        item.setDate(mselectedDate);
-        addItem(item);
+//        mDBHelper.InsertCalendar("안드로이드 시험", "안드로이드 기말 시험", mselectedDate); // DB에 인서트
+//        CalendarItemDTO item = new CalendarItemDTO();
+//        item.setTitle("안드로이드 시험");
+//        item.setContent("안드로이드 기말 시험");
+//        item.setDate(mselectedDate);
+//        addItem(item);
 
         loadRecentDB();
     }
 
     private void loadRecentDB() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mCalendarRVView.setLayoutManager(layoutManager);
         // 저장되어있던 db를 가져온다.
         mCalendarItems = mDBHelper.getCalendarItems();
-        if(mCalanderRVAdapter == null) {
-            mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate);
-            mCalendarRVView.setHasFixedSize(true);
-            mCalendarRVView.setAdapter(mCalanderRVAdapter);
-        }
+        mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate, this);
+        mCalendarRVView.setHasFixedSize(true);
+        mCalendarRVView.setAdapter(mCalanderRVAdapter);
     }
 
     public void addItem(CalendarItemDTO _item){
@@ -103,4 +105,17 @@ public class CalendarFragment extends Fragment {
     }
 
 
+    @Override
+    public void onItemClick(CalendarItemDTO calendarItemDTO) {
+        CalendarDetailFragment calendarDetailFragment = new CalendarDetailFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("selectedDate", mselectedDate);
+        calendarDetailFragment.setArguments(bundle);
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, calendarDetailFragment, "calendarDetailFragment")
+                .commitAllowingStateLoss();
+    }
 }
