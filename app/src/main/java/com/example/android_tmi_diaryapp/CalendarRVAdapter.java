@@ -67,6 +67,33 @@ public class CalendarRVAdapter extends RecyclerView.Adapter<CalendarRVAdapter.Vi
 
             title = (TextView) itemView.findViewById(R.id.rv_calendar_title);
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int curPos = getAdapterPosition(); // 현재 리스트 클릭한 이이템 위치
+                    CalendarItemDTO calendarItemDTO = mCalendarItemDTO.get(curPos);
+
+                    String[] strChoiceItems = {"삭제하기"};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);
+                    builder.setTitle("삭제 하시겠습니까?");
+                    builder.setItems(strChoiceItems, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int position) {
+                            if(position == 0) {
+                                int id = calendarItemDTO.getId();
+                                mDBHelper.DeleteCalendar(id);
+                                mCalendarItemDTO.remove(curPos);
+                                notifyItemRemoved(curPos);
+                                Toast.makeText(mcontext, "목록이 제거되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    builder.show();
+
+                    return true;
+                }
+            });
+
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                CalendarDetailFragment calendarDetailFragment = new CalendarDetailFragment();
 //
@@ -74,7 +101,7 @@ public class CalendarRVAdapter extends RecyclerView.Adapter<CalendarRVAdapter.Vi
 //                public void onClick(View view) {
 //                    int curPos = getAdapterPosition(); // 현재 리스트 클릭한 이이템 위치
 //                    CalendarItemDTO calendarItemDTO = mCalendarItemDTO.get(curPos);
-
+//
 //                    String[] strChoiceItems = {"수정하기", "삭제하기"};
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);
 //                    builder.setTitle("원하는 작업을 선택해 주세요");

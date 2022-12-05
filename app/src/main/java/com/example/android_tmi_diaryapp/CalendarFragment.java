@@ -55,6 +55,7 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
         mcalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
                 mselectedDate = year + "." + (month + 1) + "." + dayOfMonth;
+                loadRecentDB();
             }
         });
 
@@ -110,7 +111,11 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
         CalendarDetailFragment calendarDetailFragment = new CalendarDetailFragment();
 
         Bundle bundle = new Bundle();
+        bundle.putInt("ID", calendarItemDTO.getId());
+        bundle.putString("title", calendarItemDTO.getTitle());
+        bundle.putString("content", calendarItemDTO.getContent());
         bundle.putString("selectedDate", mselectedDate);
+        bundle.putBoolean("isExist", true);
         calendarDetailFragment.setArguments(bundle);
 
         getParentFragmentManager()
