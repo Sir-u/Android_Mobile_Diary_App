@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_tmi_diaryapp.DTO.CalendarItemDTO;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 

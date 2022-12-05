@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_tmi_diaryapp.DTO.CalendarItemDTO;
+
 import java.util.ArrayList;
 
 public class CalendarRVAdapter extends RecyclerView.Adapter<CalendarRVAdapter.ViewHolder> {

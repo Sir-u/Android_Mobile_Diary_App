@@ -1,4 +1,4 @@
-package com.example.android_tmi_diaryapp;
+package com.example.android_tmi_diaryapp.DTO;
 
 public class CalendarItemDTO {
     private int id;             // 켈린더리스트 아이템의 고유 아이디
