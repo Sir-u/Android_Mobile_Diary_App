@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/menu_frame_layout"
+        android:id="@+id/fragment_conainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/black"
@@ -35,6 +35,6 @@
         app:itemTextColor="#FFFFFF"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_navigation_menu"/>
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

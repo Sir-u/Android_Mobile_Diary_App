@@ -3,12 +3,50 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.28" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2325" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/activity_calendar_detail.xml" value="0.3546875" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/activity_diary_detail.xml" value="0.3546875" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/activity_main.xml" value="0.34010416666666665" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/diary_item.xml" value="0.3546875" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_calendar.xml" value="0.3546875" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_calendar_detail.xml" value="0.3546875" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_diary.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_diary_sample.xml" value="0.22" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_flush.xml" value="0.25" />
+        <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/fragment_memo.xml" value="0.22" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/layout/rv_diary.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3546875" />
         <entry key="..\:/Users/SeongYun/Desktop/TMI_Android/app/src/main/res/menu/bottomnavigation.xml" value="0.3536458333333333" />
+        <entry key="..\:/workspace/Android_TMI/Android_Mobile_Diary_App/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.3165" />
+        <entry key="..\:/workspace/Android_TMI/Android_Mobile_Diary_App/app/src/main/res/drawable/resource.xml" value="0.467" />
+        <entry key="..\:/workspace/Android_TMI/Android_Mobile_Diary_App/app/src/main/res/layout/fragment_calendar.xml" value="0.3697916666666667" />
+        <entry key="..\:/workspace/Android_TMI/Android_Mobile_Diary_App/app/src/main/res/layout/fragment_calendar_detail.xml" value="0.3697916666666667" />
+        <entry key="..\:/workspace/Android_TMI/Android_Mobile_Diary_App/app/src/main/res/layout/rv_diary.xml" value="0.5" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_baseline_event_note_24.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_baseline_flash_on_24.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_baseline_sticky_note_2_24.xml" value="0.7815" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.7815" />
+        <entry key="app/src/main/res/layout/activity_calendar_detail.xml" value="0.2663462320963542" />
+        <entry key="app/src/main/res/layout/activity_diary_detail.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.7147318522135417" />
+        <entry key="app/src/main/res/layout/calendar_activity.xml" value="0.38753799392097266" />
+        <entry key="app/src/main/res/layout/diary_activity.xml" value="0.38753799392097266" />
+        <entry key="app/src/main/res/layout/diary_item.xml" value="0.4843331678858343" />
+        <entry key="app/src/main/res/layout/flush_activity.xml" value="0.38753799392097266" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.7056159420289855" />
+        <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.5189219156901042" />
+        <entry key="app/src/main/res/layout/fragment_diary_sample.xml" value="0.49962615966796875" />
+        <entry key="app/src/main/res/layout/fragment_flush.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.5896739130434783" />
+        <entry key="app/src/main/res/layout/fragment_memo_add.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/fragment_memo_sample.xml" value="0.4528985507246377" />
+        <entry key="app/src/main/res/layout/memo_activity.xml" value="0.5260786433350352" />
+        <entry key="app/src/main/res/layout/rv_diary.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.7979166666666667" />
       </map>
     </option>
   </component>
