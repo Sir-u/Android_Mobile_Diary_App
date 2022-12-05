@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.CursorAdapter;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class CalendarFragment extends Fragment implements CalendarRVAdapter.ItemClickListener{
 
@@ -95,15 +90,15 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mCalendarRVView.setLayoutManager(layoutManager);
         // 저장되어있던 db를 가져온다.
-        mCalendarItems = mDBHelper.getCalendarItems();
+        mCalendarItems = mDBHelper.getCalendarItems(mselectedDate);
         mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate, this);
         mCalendarRVView.setHasFixedSize(true);
         mCalendarRVView.setAdapter(mCalanderRVAdapter);
     }
 
-    public void addItem(CalendarItemDTO _item){
-        mCalendarItems.add(0, _item);
-    }
+//    public void addItem(CalendarItemDTO _item){
+//        mCalendarItems.add(0, _item);
+//    }
 
 
     @Override

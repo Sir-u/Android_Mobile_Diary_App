@@ -32,11 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // SELECT 문 (할일 목록들을 조회)
-    public ArrayList<CalendarItemDTO> getCalendarItems() {
+    public ArrayList<CalendarItemDTO> getCalendarItems(String selectedDate) {
         ArrayList<CalendarItemDTO> calendarItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM CalendarList ORDER BY id DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM CalendarList WHERE date='" + selectedDate + "' ORDER BY id DESC", null);
         if(cursor.getCount() != 0) {
             // 조회된 데이터가 있을때 내부 수정
             while (cursor.moveToNext()) {
