@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private CalendarFragment fragmentCalendar = new CalendarFragment();
     private FlushhFragment fragmentFlush = new FlushhFragment();
+    private MemoFragment fragmentMemo = new MemoFragment();
+    private PhoneBookFragment fragmentPhoneBook = new PhoneBookFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
 
             switch (menuItem.getItemId()) {
-                case R.id.menu_diary:
+                case R.id.menu_calendar:
                     transaction
                             .replace(R.id.fragment_conainer, fragmentCalendar, "fragmentCalendar")
                             .commitAllowingStateLoss();
@@ -45,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
                     transaction
                         .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
                         .commitAllowingStateLoss();
+                    break;
+
+                case R.id.menu_phoneBook:
+                    transaction
+                            .replace(R.id.fragment_conainer, fragmentPhoneBook, "fragmentPhoneBook")
+                            .commitAllowingStateLoss();
+                    break;
+
+                case R.id.menu_memo:
+                    transaction
+                            .replace(R.id.fragment_conainer, fragmentMemo, "fragmentMemo")
+                            .commitAllowingStateLoss();
                     break;
             }
             return true;

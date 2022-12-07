@@ -1,4 +1,4 @@
-package com.example.android_tmi_diaryapp;
+package com.example.android_tmi_diaryapp.DTO;
 
 public class MemoItem {
     private String title;

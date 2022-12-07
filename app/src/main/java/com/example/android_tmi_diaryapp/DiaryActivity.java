@@ -4,9 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+
+import com.example.android_tmi_diaryapp.DTO.DiaryItem;
 
 import java.util.ArrayList;
 

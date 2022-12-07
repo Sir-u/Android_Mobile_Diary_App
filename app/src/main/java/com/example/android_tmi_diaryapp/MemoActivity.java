@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.android_tmi_diaryapp.DTO.MemoItem;
+
 import java.util.ArrayList;
 
 public class MemoActivity extends SQLiteOpenHelper {
