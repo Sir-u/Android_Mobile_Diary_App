@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:padding="16dp"
-    tools:context=".CalendarDetailActivity">
+    tools:context=".CalendarDetailFragment"
+    android:id="@+id/calendar_detail_fragment">
 
     <TextView
         android:id="@+id/btn_saveBack"
@@ -19,14 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <TextView
+        android:id="@+id/textview_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2022.12.03"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_saveBack"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
         android:id="@+id/edit_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_marginTop="16dp"
+        android:background="#DFDFDF"
         android:hint="title :"
         android:padding="8dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_saveBack" />
@@ -34,7 +45,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#DFDFDF"
         android:minHeight="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +53,15 @@
         android:layout_marginTop="16dp">
 
         <EditText
+            android:id="@+id/edit_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="#DFDFDF"
             android:padding="8dp"
             android:hint="text :"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
