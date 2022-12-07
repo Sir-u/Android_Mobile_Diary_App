@@ -12,9 +12,6 @@ import java.util.ArrayList;
 
 public class DiaryActivity extends SQLiteOpenHelper {
 
-    EditText name;
-    EditText phoneNumber;
-
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Diary.db";
 
@@ -75,3 +72,5 @@ public class DiaryActivity extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM DiaryList WHERE id = '"+ _id + "'");
     }
 }
+
+

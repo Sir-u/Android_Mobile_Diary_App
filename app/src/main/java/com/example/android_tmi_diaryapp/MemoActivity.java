@@ -4,16 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
 public class MemoActivity extends SQLiteOpenHelper {
-
-    EditText title;
-    EditText content;
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Memo.db";
@@ -42,9 +38,9 @@ public class MemoActivity extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM MemoList ORDER BY id DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
-                int id = cursor.getInt(cursor.getColumnIndex("id"));
-                String title = cursor.getString(cursor.getColumnIndex("title"));
-                String content = cursor.getString(cursor.getColumnIndex("content"));
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
+                String content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
 
                 MemoItem memoItem = new MemoItem();
                 memoItem.setId(id);
@@ -75,3 +71,5 @@ public class MemoActivity extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM MemoList WHERE id = '"+ _id + "'");
     }
 }
+
+
