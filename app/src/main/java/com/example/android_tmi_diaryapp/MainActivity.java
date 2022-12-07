@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private CalendarFragment fragmentCalendar = new CalendarFragment();
-    private FlushhFragment fragmentFlush = new FlushhFragment();
+    private FlushFragment fragmentFlush = new FlushFragment();
     private MemoFragment fragmentMemo = new MemoFragment();
     private PhoneBookFragment fragmentPhoneBook = new PhoneBookFragment();
 
