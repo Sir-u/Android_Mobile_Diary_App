@@ -7,16 +7,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.android_tmi_diaryapp.DTO.DiaryItem;
+import com.example.android_tmi_diaryapp.DTO.DiaryItemDTO;
 
 import java.util.ArrayList;
 
-public class DiaryActivity extends SQLiteOpenHelper {
+public class PhoneBookDBActivity extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Diary.db";
 
-    public DiaryActivity(@Nullable Context context)
+    public PhoneBookDBActivity(@Nullable Context context)
     {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -33,8 +33,8 @@ public class DiaryActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<DiaryItem> getDiaryItem(){
-        ArrayList<DiaryItem> diaryItems = new ArrayList<>();
+    public ArrayList<DiaryItemDTO> getDiaryItem(){
+        ArrayList<DiaryItemDTO> diaryItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM DiaryList ORDER BY name DESC", null);
@@ -44,7 +44,7 @@ public class DiaryActivity extends SQLiteOpenHelper {
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 String number = cursor.getString(cursor.getColumnIndex("number"));
 
-                DiaryItem diaryItem = new DiaryItem();
+                DiaryItemDTO diaryItem = new DiaryItemDTO();
                 diaryItem.setId(id);
                 diaryItem.setName(name);
                 diaryItem.setNumber(number);

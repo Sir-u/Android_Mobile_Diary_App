@@ -1,11 +1,11 @@
 package com.example.android_tmi_diaryapp.DTO;
 
-public class DiaryItem {
+public class DiaryItemDTO {
     private String name;
     private String number;
     private int id;
 
-    public DiaryItem()
+    public DiaryItemDTO()
     {
     }
 

@@ -24,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         OnCalendar();
+        // FIXIT
+        // OnMemo();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_conainer, fragmentCalendar).commitAllowingStateLoss();
+        // FIXIT
+        // transaction.replace(R.id.fragment_conainer, fragmentMemo).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
@@ -69,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_conainer, fragmentCalendar)
+                .commitAllowingStateLoss();
+    }
+
+    public void OnMemo() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, fragmentMemo)
                 .commitAllowingStateLoss();
     }
 }

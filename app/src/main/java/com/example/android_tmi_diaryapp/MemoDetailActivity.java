@@ -8,8 +8,6 @@ public class MemoDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_memo_add);
+        setContentView(R.layout.fragment_memo_detail);
     }
 }
-
-

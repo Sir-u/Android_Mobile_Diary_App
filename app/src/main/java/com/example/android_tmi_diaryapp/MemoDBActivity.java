@@ -7,16 +7,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.android_tmi_diaryapp.DTO.MemoItem;
+import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
 
 import java.util.ArrayList;
 
-public class MemoActivity extends SQLiteOpenHelper {
+public class MemoDBActivity extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Memo.db";
 
-    public MemoActivity(@Nullable Context context)
+    public MemoDBActivity(@Nullable Context context)
     {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -33,8 +33,8 @@ public class MemoActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<MemoItem> getMemoItem(){
-        ArrayList<MemoItem> memoItems = new ArrayList<>();
+    public ArrayList<MemoItemDTO> getMemoItem(){
+        ArrayList<MemoItemDTO> memoItems = new ArrayList<>();
 
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM MemoList ORDER BY id DESC", null);
@@ -44,7 +44,7 @@ public class MemoActivity extends SQLiteOpenHelper {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
 
-                MemoItem memoItem = new MemoItem();
+                MemoItemDTO memoItem = new MemoItemDTO();
                 memoItem.setId(id);
                 memoItem.setTitle(title);
                 memoItem.setContent(content);
