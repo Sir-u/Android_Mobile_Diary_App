@@ -72,7 +72,6 @@ public class CalendarDetailFragment extends Fragment {
                         .remove(CalendarDetailFragment.this)
                         .commitAllowingStateLoss();
             }
-
         });
 
         return rootview;

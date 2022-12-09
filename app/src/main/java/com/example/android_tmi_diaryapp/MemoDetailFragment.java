@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,14 +13,16 @@ import androidx.fragment.app.Fragment;
 import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class MemoDetailFragment extends Fragment {
     private ArrayList<MemoItemDTO> mMemoItems;
     private MemoDBActivity mDBActivity;
-    private String mTitle;
-    private String mContent;
-    private int mID;
+    private String mmTitle;
+    private String mmContent;
+    private int mmID;
     private boolean isExist;
 
     @Override
@@ -30,9 +33,9 @@ public class MemoDetailFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if(bundle != null) {
-            mTitle = bundle.getString("title");
-            mContent = bundle.getString("content");
-            mID = bundle.getInt("ID");
+            mmTitle = bundle.getString("title");
+            mmContent = bundle.getString("content");
+            mmID = bundle.getInt("ID");
             isExist = bundle.getBoolean("isExist");
         }
     }
@@ -42,7 +45,29 @@ public class MemoDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.fragment_memo_detail, container, false);
 
+        setInit();
 
+        TextView memoTitle = rootview.findViewById(R.id.memo_title);        // memo title
+        TextView memoContent = rootview.findViewById(R.id.memo_content);    // memo content
+
+        memoTitle.setText(mmTitle);
+        memoContent.setText(mmContent);
+
+        rootview.findViewById(R.id.memo_button_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isExist == false){
+                    mDBActivity.InsertMemo(memoTitle.getText().toString(), memoContent.getText().toString());
+                } else {
+                    mDBActivity.UpdateMemo(memoTitle.getText().toString(), memoContent.getText().toString(), mmID);
+                }
+
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .remove(MemoDetailFragment.this)
+                        .commitAllowingStateLoss();
+            }
+        });
 
         return rootview;
     }

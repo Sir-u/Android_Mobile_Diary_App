@@ -44,10 +44,11 @@ public class MemoDBActivity extends SQLiteOpenHelper {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
 
-                MemoItemDTO memoItem = new MemoItemDTO();
-                memoItem.setId(id);
-                memoItem.setTitle(title);
-                memoItem.setContent(content);
+                MemoItemDTO memoItemDTO = new MemoItemDTO();
+                memoItemDTO.setId(id);
+                memoItemDTO.setTitle(title);
+                memoItemDTO.setContent(content);
+                memoItems.add(memoItemDTO);
             }
         }
 
@@ -58,7 +59,7 @@ public class MemoDBActivity extends SQLiteOpenHelper {
     // INSERT 문
     public void InsertMemo(String _title, String _content){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO MemoList (name, number) VALUES('" + _title + "', '"+ _content +"');");
+        db.execSQL("INSERT INTO MemoList (title, content) VALUES('" + _title + "', '" + _content +"');");
     }
 
     // UPDATE 문
