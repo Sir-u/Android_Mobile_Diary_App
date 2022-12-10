@@ -20,14 +20,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/textView"
                 android:layout_width="220dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:text="검색" />
+
+                android:ems="10"
+                android:inputType="textPersonName"
+                />
 
             <Button
                 android:id="@+id/diary_find_button"
@@ -62,7 +65,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_phonebook_container"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/rv_phonebook"
                     app:layout_constraintEnd_toEndOf="parent"

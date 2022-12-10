@@ -35,16 +35,22 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
         return new PhoneBookRVAdapter.ViewHolder(holder);
     }
 
-    public void onBindViewHolder(PhoneBookRVAdapter.ViewHolder ViewHolder, @SuppressLint("RecyclerView") int position) {
-        ViewHolder.onBind(mPhoneBookItemDTO.get(position));
-
-        ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickListener.onItemClick(mPhoneBookItemDTO.get(position));
-            }
-        });
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.nameView.setText(mPhoneBookItemDTO.get(position).getName());
+        holder.numberView.setText(mPhoneBookItemDTO.get(position).getNumber());
     }
+
+//    public void onBindViewHolder(PhoneBookRVAdapter.ViewHolder ViewHolder, @SuppressLint("RecyclerView") int position) {
+//        ViewHolder.onBind(mPhoneBookItemDTO.get(position));
+//
+//        ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clickListener.onItemClick(mPhoneBookItemDTO.get(position));
+//            }
+//        });
+//    }
 
     @Override
     public int getItemCount() {
@@ -53,11 +59,13 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameView;
+        TextView numberView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameView = (TextView) itemView.findViewById(R.id.phonebook_name);
+            numberView = itemView.findViewById(R.id.phonebook_number);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener(){
                 @Override
@@ -91,10 +99,7 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
         void onBind(PhoneBookItemDTO item){
             nameView.setText(item.getName());
         }
-
     }
-
-
 
     public interface ItemClickListener {
         public void onItemClick(PhoneBookItemDTO phoneBookItemDTO);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PhoneBookDBActivity extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "Diary.db";
+    private static final String DB_NAME = "Phonebook.db";
 
     public PhoneBookDBActivity(@Nullable Context context)
     {
@@ -33,7 +33,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<PhoneBookItemDTO> getDiaryItem(){
+    public ArrayList<PhoneBookItemDTO> getPhoneBookItem(){
         ArrayList<PhoneBookItemDTO> diaryItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
@@ -44,10 +44,10 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
                 String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
                 String number = cursor.getString(cursor.getColumnIndexOrThrow("number"));
 
-                PhoneBookItemDTO diaryItem = new PhoneBookItemDTO();
-                diaryItem.setId(id);
-                diaryItem.setName(name);
-                diaryItem.setNumber(number);
+                PhoneBookItemDTO pbItem = new PhoneBookItemDTO();
+                pbItem.setId(id);
+                pbItem.setName(name);
+                pbItem.setNumber(number);
             }
         }
 

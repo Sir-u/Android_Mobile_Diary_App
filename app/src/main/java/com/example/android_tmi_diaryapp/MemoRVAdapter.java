@@ -33,7 +33,7 @@ public class MemoRVAdapter extends RecyclerView.Adapter<MemoRVAdapter.ViewHolder
 
     public MemoRVAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_memo, parent, false);
-        return new MemoRVAdapter.ViewHolder(holder);
+        return new ViewHolder(holder);
     }
 
 //
@@ -66,10 +66,10 @@ public class MemoRVAdapter extends RecyclerView.Adapter<MemoRVAdapter.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
-            titleView = (TextView) itemView.findViewById(R.id.memo_title);
+            titleView = (TextView) itemView.findViewById(R.id.rv_memo_title);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -88,7 +88,7 @@ public class MemoRVAdapter extends RecyclerView.Adapter<MemoRVAdapter.ViewHolder
                                 memoDBActivity.DeleteMemo(id);
                                 mMemoItemDTO.remove(curPos);
                                 notifyItemRemoved(curPos);
-                                Toast.makeText(memoContext, "목록이 제거되었습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(memoContext, "메모가 제거되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

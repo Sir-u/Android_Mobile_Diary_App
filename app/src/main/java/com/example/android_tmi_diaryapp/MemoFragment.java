@@ -21,7 +21,7 @@ public class MemoFragment extends Fragment implements MemoRVAdapter.ItemClickLis
     private MemoRVAdapter mMemoRVAdapter;
     private ArrayList<MemoItemDTO> mMemoItems;
     private MemoDBActivity memoDBActivity;
-    private String memoTitle;
+    //private String memoTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
@@ -59,16 +59,25 @@ public class MemoFragment extends Fragment implements MemoRVAdapter.ItemClickLis
         memoDBActivity = new MemoDBActivity(getContext());
         mMemoItems = new ArrayList<>();
 
+//        memoDBActivity.InsertMemo("안드로이드 시험", "안드로이드 기말 시험"); // DB에 인서트
+//        MemoItemDTO item = new MemoItemDTO();
+//        item.setTitle("안드로이드 시험");
+//        item.setContent("안드로이드 기말 시험");
+//        addItem(item);
+
+
         loadRecentDB();
     }
+
+//    public void addItem(MemoItemDTO _item){
+//        mMemoItems.add(0, _item);
+//    }
 
     private void loadRecentDB() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mMemoRVView.setLayoutManager(layoutManager);
-        mMemoItems = memoDBActivity.getMemoItem(memoTitle);
+        mMemoItems = memoDBActivity.getMemoItem();
         mMemoRVAdapter = new MemoRVAdapter(mMemoItems, getContext(), this);
-
-        // FIXIT
         mMemoRVView.setHasFixedSize(true);
         mMemoRVView.setAdapter(mMemoRVAdapter);
     }

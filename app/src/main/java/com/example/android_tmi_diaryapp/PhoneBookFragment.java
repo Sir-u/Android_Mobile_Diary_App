@@ -8,15 +8,36 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
 import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
+
+import java.util.ArrayList;
 
 public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.ItemClickListener{
 
+    private RecyclerView mPhoneBookRVView;
+    private PhoneBookRVAdapter mPhoneBookRVAdapter;
+    private ArrayList<PhoneBookItemDTO> mPhoneBookItems;
+    private PhoneBookDBActivity mPhoneBookDBActivity;
+    private String mPbName;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_phonebook, container, false);
 
+        mPhoneBookRVView = rootview.findViewById(R.id.rv_phonebook_container);
 
+        setInit();
 
         return rootview;
     }
@@ -37,4 +58,23 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
                 .replace(R.id.fragment_conainer, memoDetailFragment, "memoDetailFragment")
                 .commitAllowingStateLoss();
     }
+
+
+    private void setInit() {
+        mPhoneBookDBActivity = new PhoneBookDBActivity(getContext());
+        mPhoneBookItems = new ArrayList<>();
+
+        loadRecentDB();
+    }
+
+    private void loadRecentDB(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mPhoneBookRVView.setLayoutManager(layoutManager);
+        mPhoneBookItems = mPhoneBookDBActivity.getPhoneBookItem();
+        mPhoneBookRVAdapter = new PhoneBookRVAdapter(mPhoneBookItems, getContext(), this);
+        mPhoneBookRVView.setHasFixedSize(true);
+        mPhoneBookRVView.setAdapter(mPhoneBookRVAdapter);
+    }
+
+
 }

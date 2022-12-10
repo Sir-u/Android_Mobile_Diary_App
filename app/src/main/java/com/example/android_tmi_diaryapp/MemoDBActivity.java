@@ -33,11 +33,11 @@ public class MemoDBActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<MemoItemDTO> getMemoItem(String selectedTitle){
+    public ArrayList<MemoItemDTO> getMemoItem(){
         ArrayList<MemoItemDTO> memoItems = new ArrayList<>();
 
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM MemoList WHERE title='"+ selectedTitle +"'ORDER BY id DESC", null);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM MemoList ORDER BY id DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
