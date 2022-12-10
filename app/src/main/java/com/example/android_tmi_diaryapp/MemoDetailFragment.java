@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class MemoDetailFragment extends Fragment {
@@ -68,6 +66,22 @@ public class MemoDetailFragment extends Fragment {
                         .commitAllowingStateLoss();
             }
         });
+
+        rootview.findViewById(R.id.btn_memo_Back).setOnClickListener(new View.OnClickListener(){
+            MemoFragment memoFragment = new MemoFragment();
+
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                memoFragment.setArguments(bundle);
+
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_conainer, memoFragment, "memoFragment")
+                        .commitAllowingStateLoss();
+            }
+        });
+
 
         return rootview;
     }

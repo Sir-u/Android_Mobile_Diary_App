@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.android_tmi_diaryapp.DTO.DiaryItemDTO;
+import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
 
 import java.util.ArrayList;
 
@@ -33,18 +33,18 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<DiaryItemDTO> getDiaryItem(){
-        ArrayList<DiaryItemDTO> diaryItems = new ArrayList<>();
+    public ArrayList<PhoneBookItemDTO> getDiaryItem(){
+        ArrayList<PhoneBookItemDTO> diaryItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM DiaryList ORDER BY name DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
-                int id = cursor.getInt(cursor.getColumnIndex("id"));
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                String number = cursor.getString(cursor.getColumnIndex("number"));
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                String number = cursor.getString(cursor.getColumnIndexOrThrow("number"));
 
-                DiaryItemDTO diaryItem = new DiaryItemDTO();
+                PhoneBookItemDTO diaryItem = new PhoneBookItemDTO();
                 diaryItem.setId(id);
                 diaryItem.setName(name);
                 diaryItem.setNumber(number);

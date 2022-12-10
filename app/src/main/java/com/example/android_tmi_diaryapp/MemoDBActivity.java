@@ -33,11 +33,11 @@ public class MemoDBActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<MemoItemDTO> getMemoItem(){
+    public ArrayList<MemoItemDTO> getMemoItem(String selectedTitle){
         ArrayList<MemoItemDTO> memoItems = new ArrayList<>();
 
         SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM MemoList ORDER BY id DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM MemoList WHERE title='"+ selectedTitle +"'ORDER BY id DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
@@ -51,8 +51,8 @@ public class MemoDBActivity extends SQLiteOpenHelper {
                 memoItems.add(memoItemDTO);
             }
         }
-
         cursor.close();
+
         return memoItems;
     }
 
@@ -65,7 +65,7 @@ public class MemoDBActivity extends SQLiteOpenHelper {
     // UPDATE 문
     public void UpdateMemo(String _title, String _content, int _id){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("UPDATE MemoList SET title='" + _title +"', content='"+ _content +"' WHERE id='" + _id + "'");
+        db.execSQL("UPDATE MemoList SET title='" + _title +"', content='" + _content +"' WHERE id='" + _id + "'");
     }
 
     // DELETE 문
@@ -73,6 +73,8 @@ public class MemoDBActivity extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM MemoList WHERE id = '"+ _id + "'");
     }
+
+
 }
 
 

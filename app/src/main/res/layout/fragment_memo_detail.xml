@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/btn_memo_saveBack"
+        android:id="@+id/btn_memo_Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="메모"
@@ -28,7 +28,7 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_memo_saveBack" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_memo_Back" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/edit_memo"

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/rv_calendar_title"
+            android:id="@+id/rv_memo_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메모메모"

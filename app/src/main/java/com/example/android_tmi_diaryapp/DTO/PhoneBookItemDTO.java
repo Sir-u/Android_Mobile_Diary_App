@@ -1,13 +1,11 @@
 package com.example.android_tmi_diaryapp.DTO;
 
-public class DiaryItemDTO {
+public class PhoneBookItemDTO {
     private String name;
     private String number;
     private int id;
 
-    public DiaryItemDTO()
-    {
-    }
+    public PhoneBookItemDTO() {}
 
     public String getName() {
         return name;
