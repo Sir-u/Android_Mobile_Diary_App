@@ -8,13 +8,12 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/btn_memo_Back"
+        android:id="@+id/MENU_Memo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="메모"
         android:textSize="20sp"
         android:textColor="@color/white"
-        android:drawableStart="@drawable/ic_baseline_arrow_back_ios_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -28,7 +27,7 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_memo_Back" />
+        app:layout_constraintTop_toBottomOf="@+id/MENU_Memo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/edit_memo"
@@ -60,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:backgroundTint="#222222"
+        android:onClick="OnReturnButtonClicked"
         android:text="CANCEL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.678"

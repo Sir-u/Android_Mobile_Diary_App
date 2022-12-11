@@ -1,9 +1,12 @@
 package com.example.android_tmi_diaryapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +46,8 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
 
     @Override
     public void onItemClick(PhoneBookItemDTO phoneBookItemDTO) {
+
+
         MemoDetailFragment memoDetailFragment = new MemoDetailFragment();
 
         Bundle bundle = new Bundle();
@@ -63,11 +68,11 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         mPhoneBookDBActivity = new PhoneBookDBActivity(getContext());
         mPhoneBookItems = new ArrayList<>();
 
-        mPhoneBookDBActivity.InsertPhoneBook("윤희창", "010-3425-3513"); // DB에 인서트
-        PhoneBookItemDTO item = new PhoneBookItemDTO();
-        item.setName("윤희창");
-        item.setNumber("010-3425-3513");
-        addItem(item);
+//        mPhoneBookDBActivity.InsertPhoneBook("윤희창", "010-3425-3513"); // DB에 인서트
+//        PhoneBookItemDTO item = new PhoneBookItemDTO();
+//        item.setName("윤희창");
+//        item.setNumber("010-3425-3513");
+//        addItem(item);
 
 
         loadRecentDB();

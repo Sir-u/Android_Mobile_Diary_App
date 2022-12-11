@@ -67,7 +67,7 @@ public class MemoDetailFragment extends Fragment {
             }
         });
 
-        rootview.findViewById(R.id.btn_memo_Back).setOnClickListener(new View.OnClickListener(){
+        rootview.findViewById(R.id.memo_button_cancel).setOnClickListener(new View.OnClickListener(){
             MemoFragment memoFragment = new MemoFragment();
 
             @Override
