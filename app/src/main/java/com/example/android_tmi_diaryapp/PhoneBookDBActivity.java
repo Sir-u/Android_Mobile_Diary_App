@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PhoneBookDBActivity extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "Phonebook.db";
+    private static final String DB_NAME = "PhoneBook.db";
 
     public PhoneBookDBActivity(@Nullable Context context)
     {
@@ -25,7 +25,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // 데이터베이스가 생성이 될 때 호출
         // 데이터베이스 -> 테이블 -> 컬럼 -> 값
-        db.execSQL("CREATE TABLE IF NOT EXISTS DiaryList (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, number TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS PhoneBookList (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, number TEXT NOT NULL)");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         ArrayList<PhoneBookItemDTO> diaryItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM DiaryList ORDER BY name DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM PhoneBookList ORDER BY name DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
@@ -48,6 +48,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
                 pbItem.setId(id);
                 pbItem.setName(name);
                 pbItem.setNumber(number);
+                diaryItems.add(pbItem);
             }
         }
 
@@ -56,21 +57,21 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
     }
 
     // INSERT 문
-    public void InsertDiary(String _name, String _number){
+    public void InsertPhoneBook(String _name, String _number){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO DiaryList (name, number) VALUES('" + _name + "', '"+ _number +"');");
+        db.execSQL("INSERT INTO PhoneBookList (name, number) VALUES('" + _name + "', '"+ _number +"');");
     }
 
     // UPDATE 문
-    public void UpdateDiary(String _name, String _number, int _id){
+    public void UpdatePhoneBook(String _name, String _number, int _id){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("UPDATE DiaryList SET name='" + _name +"', number='"+ _number +"' WHERE id='" + _id + "'");
+        db.execSQL("UPDATE PhoneBookList SET name='" + _name +"', number='"+ _number +"' WHERE id='" + _id + "'");
     }
 
     // DELETE 문
-    public  void DeleteDiary(int _id){
+    public  void DeletePhoneBook(int _id){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM DiaryList WHERE id = '"+ _id + "'");
+        db.execSQL("DELETE FROM PhoneBookList WHERE id = '"+ _id + "'");
     }
 }
 

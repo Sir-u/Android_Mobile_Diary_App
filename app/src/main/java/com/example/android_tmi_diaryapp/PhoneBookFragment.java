@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
 import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
 
 import java.util.ArrayList;
@@ -64,8 +63,20 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         mPhoneBookDBActivity = new PhoneBookDBActivity(getContext());
         mPhoneBookItems = new ArrayList<>();
 
+        mPhoneBookDBActivity.InsertPhoneBook("윤희창", "010-3425-3513"); // DB에 인서트
+        PhoneBookItemDTO item = new PhoneBookItemDTO();
+        item.setName("윤희창");
+        item.setNumber("010-3425-3513");
+        addItem(item);
+
+
         loadRecentDB();
     }
+
+    public void addItem(PhoneBookItemDTO _item){
+        mPhoneBookItems.add(0, _item);
+    }
+
 
     private void loadRecentDB(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

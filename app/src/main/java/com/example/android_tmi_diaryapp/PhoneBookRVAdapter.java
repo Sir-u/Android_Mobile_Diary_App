@@ -35,22 +35,22 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
         return new PhoneBookRVAdapter.ViewHolder(holder);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.nameView.setText(mPhoneBookItemDTO.get(position).getName());
-        holder.numberView.setText(mPhoneBookItemDTO.get(position).getNumber());
-    }
-
-//    public void onBindViewHolder(PhoneBookRVAdapter.ViewHolder ViewHolder, @SuppressLint("RecyclerView") int position) {
-//        ViewHolder.onBind(mPhoneBookItemDTO.get(position));
-//
-//        ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                clickListener.onItemClick(mPhoneBookItemDTO.get(position));
-//            }
-//        });
+//    @Override
+//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+//        holder.nameView.setText(mPhoneBookItemDTO.get(position).getName());
+//        holder.numberView.setText(mPhoneBookItemDTO.get(position).getNumber());
 //    }
+
+    public void onBindViewHolder(PhoneBookRVAdapter.ViewHolder ViewHolder, @SuppressLint("RecyclerView") int position) {
+        ViewHolder.onBind(mPhoneBookItemDTO.get(position));
+
+        ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickListener.onItemClick(mPhoneBookItemDTO.get(position));
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
@@ -59,13 +59,13 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameView;
-        TextView numberView;
+        //TextView numberView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameView = (TextView) itemView.findViewById(R.id.phonebook_name);
-            numberView = itemView.findViewById(R.id.phonebook_number);
+            //numberView = (TextView) itemView.findViewById(R.id.phonebook_number);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener(){
                 @Override
@@ -81,7 +81,7 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
                         public void onClick(DialogInterface dialogInterface, int position) {
                             if(position == 0){
                                 int id = phoneBookItemDTO.getId();
-                                phoneBookDBActivity.DeleteDiary(id);
+                                phoneBookDBActivity.DeletePhoneBook(id);
                                 mPhoneBookItemDTO.remove(curPos);
                                 notifyItemRemoved(curPos);
                                 Toast.makeText(mPhonebookContext, "목록이 제거되었습니다.", Toast.LENGTH_SHORT).show();
