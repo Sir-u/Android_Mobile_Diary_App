@@ -27,6 +27,7 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
     private String mPbName;
 
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -46,22 +47,26 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
 
     @Override
     public void onItemClick(PhoneBookItemDTO phoneBookItemDTO) {
-
-
-        MemoDetailFragment memoDetailFragment = new MemoDetailFragment();
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("ID", phoneBookItemDTO.getId());
-        bundle.putString("name", phoneBookItemDTO.getName());
-        bundle.putString("number", phoneBookItemDTO.getNumber());
-        bundle.putBoolean("isExist", true);
-        memoDetailFragment.setArguments(bundle);
-
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_conainer, memoDetailFragment, "memoDetailFragment")
-                .commitAllowingStateLoss();
+        String call = phoneBookItemDTO.getNumber();
+        String tel = "tel:" + call;
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(tel)));
     }
+//
+//
+//        MemoDetailFragment memoDetailFragment = new MemoDetailFragment();
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("ID", phoneBookItemDTO.getId());
+//        bundle.putString("name", phoneBookItemDTO.getName());
+//        bundle.putString("number", phoneBookItemDTO.getNumber());
+//        bundle.putBoolean("isExist", true);
+//        memoDetailFragment.setArguments(bundle);
+//
+//        getParentFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.fragment_conainer, memoDetailFragment, "memoDetailFragment")
+//                .commitAllowingStateLoss();
+//    }
 
 
     private void setInit() {
@@ -78,9 +83,9 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         loadRecentDB();
     }
 
-    public void addItem(PhoneBookItemDTO _item){
-        mPhoneBookItems.add(0, _item);
-    }
+//    public void addItem(PhoneBookItemDTO _item){
+//        mPhoneBookItems.add(0, _item);
+//    }
 
 
     private void loadRecentDB(){

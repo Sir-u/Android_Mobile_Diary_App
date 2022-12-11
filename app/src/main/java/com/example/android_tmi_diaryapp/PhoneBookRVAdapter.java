@@ -2,11 +2,14 @@ package com.example.android_tmi_diaryapp;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,13 +62,22 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameView;
-        //TextView numberView;
+        TextView numberView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameView = (TextView) itemView.findViewById(R.id.phonebook_name);
-            //numberView = (TextView) itemView.findViewById(R.id.phonebook_number);
+            numberView = (TextView) itemView.findViewById(R.id.phonebook_number);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int curPos = getAdapterPosition();
+                    PhoneBookItemDTO phoneBookItemDTO = mPhoneBookItemDTO.get(curPos);
+                }
+            });
+
 
             itemView.setOnLongClickListener(new View.OnLongClickListener(){
                 @Override
@@ -73,13 +85,39 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
                     int curPos = getAdapterPosition();
                     PhoneBookItemDTO phoneBookItemDTO = mPhoneBookItemDTO.get(curPos);
 
-                    String[] strChoiceItem = {"삭제하기"};
+                    String[] strChoiceItem = {"수정하기","삭제하기"};
                     AlertDialog.Builder builder = new AlertDialog.Builder(mPhonebookContext);
                     builder.setTitle("삭제 하시겠습니까?");
                     builder.setItems(strChoiceItem, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int position) {
-                            if(position == 0){
+                            if(position == 0 ) {
+                                Dialog dialog = new Dialog(mPhonebookContext, android.R.style.Theme_Material_Light_Dialog);
+                                dialog.setContentView(R.layout.fragment_phonebook_detail);
+                                EditText et_name = dialog.findViewById(R.id.ev_pb_name);
+                                EditText et_number = dialog.findViewById(R.id.ev_pb_number);
+                                Button btn_check = dialog.findViewById(R.id.ph_check_button);
+                                btn_check.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        int id = phoneBookItemDTO.getId();
+                                        String name = et_name.getText().toString();
+                                        String number = et_number.getText().toString();
+
+                                        phoneBookDBActivity.UpdatePhoneBook(name, number, id);
+
+                                        phoneBookItemDTO.setName(name);
+                                        phoneBookItemDTO.setNumber(number);
+                                        phoneBookItemDTO.setId(id);
+                                        notifyItemChanged(curPos, phoneBookItemDTO);
+                                        dialog.dismiss();
+                                        Toast.makeText(mPhonebookContext, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                                dialog.show();
+
+                            } else if(position == 1){
                                 int id = phoneBookItemDTO.getId();
                                 phoneBookDBActivity.DeletePhoneBook(id);
                                 mPhoneBookItemDTO.remove(curPos);
@@ -94,10 +132,12 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
                     return true;
                 }
             });
+
         }
 
         void onBind(PhoneBookItemDTO item){
             nameView.setText(item.getName());
+            numberView.setText(item.getNumber());
         }
     }
 
