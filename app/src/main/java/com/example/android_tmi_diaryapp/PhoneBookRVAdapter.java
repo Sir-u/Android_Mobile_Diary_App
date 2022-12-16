@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -135,7 +133,7 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
                                 dialog.setContentView(R.layout.fragment_phonebook_detail);
                                 EditText et_name = dialog.findViewById(R.id.ev_pb_name);
                                 EditText et_number = dialog.findViewById(R.id.ev_pb_number);
-                                Button btn_check = dialog.findViewById(R.id.ph_check_button);
+                                Button btn_check = dialog.findViewById(R.id.pb_check_button);
                                 btn_check.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {

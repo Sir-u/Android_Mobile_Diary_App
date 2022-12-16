@@ -1,5 +1,6 @@
 package com.example.android_tmi_diaryapp;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +28,7 @@ import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
 
 import java.util.ArrayList;
 
-public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.ItemClickListener{ //, TextWatcher {
+public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.ItemClickListener { //, TextWatcher {
 
     private RecyclerView mPhoneBookRVView;
     private PhoneBookRVAdapter mPhoneBookRVAdapter;
@@ -65,9 +67,17 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
 
 
         rootview.findViewById(R.id.pb_add_button).setOnClickListener(new View.OnClickListener() {
+            private PhoneBookDetailFragment mPhoneBookDetailFragment = new PhoneBookDetailFragment();
+
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
 
+                mPhoneBookDetailFragment.setArguments(bundle);
 
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_conainer, mPhoneBookDetailFragment, "PhoneBookDetailFragment")
+                        .commitAllowingStateLoss();
             }
         });
 
@@ -75,6 +85,10 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         return rootview;
     }
 
+
+    public void onClickHandler(){
+
+    }
 
 
     @Override

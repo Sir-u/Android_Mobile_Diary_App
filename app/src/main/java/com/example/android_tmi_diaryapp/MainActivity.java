@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.menu_flush:
                     transaction
-                        .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
-                        .commitAllowingStateLoss();
+                            .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
+                            .commitAllowingStateLoss();
                     break;
 
                 case R.id.menu_phoneBook:
@@ -80,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_conainer, fragmentMemo)
+                .commitAllowingStateLoss();
+    }
+
+    public void OnPhoneBook() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, fragmentPhoneBook)
                 .commitAllowingStateLoss();
     }
 }
