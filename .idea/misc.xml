@@ -49,9 +49,9 @@
         <entry key="app/src/main/res/layout/fragment_flush.xml" value="0.6963151207115629" />
         <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.7867782592773438" />
         <entry key="app/src/main/res/layout/fragment_memo_add.xml" value="0.4282115869017632" />
-        <entry key="app/src/main/res/layout/fragment_memo_detail.xml" value="0.5238095238095238" />
+        <entry key="app/src/main/res/layout/fragment_memo_detail.xml" value="0.3397312859884837" />
         <entry key="app/src/main/res/layout/fragment_memo_sample.xml" value="0.4528985507246377" />
-        <entry key="app/src/main/res/layout/fragment_phonebook.xml" value="0.2541839599609375" />
+        <entry key="app/src/main/res/layout/fragment_phonebook.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_phonebook_detail.xml" value="0.6139017740885415" />
         <entry key="app/src/main/res/layout/memo_activity.xml" value="0.5260786433350352" />
         <entry key="app/src/main/res/layout/rv_diary.xml" value="0.24521433512369795" />

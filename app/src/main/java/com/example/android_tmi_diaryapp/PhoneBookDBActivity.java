@@ -4,12 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
 
 import java.util.ArrayList;
+import java.util.concurrent.SynchronousQueue;
 
 public class PhoneBookDBActivity extends SQLiteOpenHelper {
 
@@ -37,7 +39,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         ArrayList<PhoneBookItemDTO> diaryItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM PhoneBookList ORDER BY name DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM PhoneBookList ORDER BY name ASC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
@@ -56,6 +58,33 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         return diaryItems;
     }
 
+    public ArrayList<PhoneBookItemDTO> SearchPhoneBook(String _name){
+        ArrayList<PhoneBookItemDTO> diaryItems = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM PhoneBookList WHERE name=?", new String[]{_name});
+        Log.d("검색할 이름", _name);
+
+        if(cursor.getCount() != 0){
+            while (cursor.moveToNext()){
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                String number = cursor.getString(cursor.getColumnIndexOrThrow("number"));
+                Log.d("이름 나오나?", name);
+
+                PhoneBookItemDTO pbItem = new PhoneBookItemDTO();
+                pbItem.setId(id);
+                pbItem.setName(name);
+                pbItem.setNumber(number);
+                diaryItems.add(pbItem);
+            }
+        }
+
+        cursor.close();
+
+        return diaryItems;
+    }
+
     // INSERT 문
     public void InsertPhoneBook(String _name, String _number){
         SQLiteDatabase db = getWritableDatabase();
@@ -67,6 +96,7 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("UPDATE PhoneBookList SET name='" + _name +"', number='"+ _number +"' WHERE id='" + _id + "'");
     }
+
 
     // DELETE 문
     public  void DeletePhoneBook(int _id){

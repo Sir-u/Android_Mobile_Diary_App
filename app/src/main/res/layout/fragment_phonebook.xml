@@ -32,7 +32,7 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/diary_find_button"
+                android:id="@+id/pb_search_button"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
@@ -41,7 +41,7 @@
                 android:text="🔍" />
 
             <Button
-                android:id="@+id/diary_add_button"
+                android:id="@+id/pb_add_button"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
@@ -59,7 +59,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="5dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_phonebook_container"

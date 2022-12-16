@@ -1,11 +1,19 @@
 package com.example.android_tmi_diaryapp;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,13 +26,15 @@ import com.example.android_tmi_diaryapp.DTO.PhoneBookItemDTO;
 
 import java.util.ArrayList;
 
-public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.ItemClickListener{
+public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.ItemClickListener{ //, TextWatcher {
 
     private RecyclerView mPhoneBookRVView;
     private PhoneBookRVAdapter mPhoneBookRVAdapter;
     private ArrayList<PhoneBookItemDTO> mPhoneBookItems;
     private PhoneBookDBActivity mPhoneBookDBActivity;
+    private Context mPhonebookContext;
     private String mPbName;
+
 
 
 
@@ -37,13 +47,35 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_phonebook, container, false);
+        TextView pbName = rootview.findViewById(R.id.PB_Search);
 
         mPhoneBookRVView = rootview.findViewById(R.id.rv_phonebook_container);
 
         setInit();
 
+        rootview.findViewById(R.id.pb_search_button).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String name = pbName.getText().toString();
+
+                Log.d("이름 전달", name);
+                mPhoneBookDBActivity.SearchPhoneBook(name);
+                loadSearchDB(name);
+            }
+        });
+
+
+        rootview.findViewById(R.id.pb_add_button).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+        });
+
+
         return rootview;
     }
+
+
 
     @Override
     public void onItemClick(PhoneBookItemDTO phoneBookItemDTO) {
@@ -51,23 +83,6 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         String tel = "tel:" + call;
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(tel)));
     }
-//
-//
-//        MemoDetailFragment memoDetailFragment = new MemoDetailFragment();
-//
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("ID", phoneBookItemDTO.getId());
-//        bundle.putString("name", phoneBookItemDTO.getName());
-//        bundle.putString("number", phoneBookItemDTO.getNumber());
-//        bundle.putBoolean("isExist", true);
-//        memoDetailFragment.setArguments(bundle);
-//
-//        getParentFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.fragment_conainer, memoDetailFragment, "memoDetailFragment")
-//                .commitAllowingStateLoss();
-//    }
-
 
     private void setInit() {
         mPhoneBookDBActivity = new PhoneBookDBActivity(getContext());
@@ -83,9 +98,10 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         loadRecentDB();
     }
 
-//    public void addItem(PhoneBookItemDTO _item){
-//        mPhoneBookItems.add(0, _item);
-//    }
+    public void addItem(PhoneBookItemDTO _item){
+        mPhoneBookItems.add(0, _item);
+    }
+
 
 
     private void loadRecentDB(){
@@ -97,5 +113,29 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         mPhoneBookRVView.setAdapter(mPhoneBookRVAdapter);
     }
 
+
+    private void loadSearchDB(String name){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mPhoneBookRVView.setLayoutManager(layoutManager);
+        mPhoneBookItems = mPhoneBookDBActivity.SearchPhoneBook(name);
+        mPhoneBookRVAdapter = new PhoneBookRVAdapter(mPhoneBookItems, getContext(), this);
+        mPhoneBookRVView.setHasFixedSize(true);
+        mPhoneBookRVView.setAdapter(mPhoneBookRVAdapter);
+    }
+//
+//    @Override
+//    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//    }
+//
+//    @Override
+//    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//        //mPhoneBookRVAdapter.getFilter().filter(charSequence);
+//    }
+//
+//    @Override
+//    public void afterTextChanged(Editable editable) {
+//
+//    }
 
 }
