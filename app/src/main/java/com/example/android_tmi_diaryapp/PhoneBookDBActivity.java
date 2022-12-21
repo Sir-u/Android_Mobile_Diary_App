@@ -63,14 +63,14 @@ public class PhoneBookDBActivity extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM PhoneBookList WHERE name=?", new String[]{_name});
-        Log.d("검색할 이름", _name);
+        //Log.d("검색할 이름", _name);
 
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
                 String number = cursor.getString(cursor.getColumnIndexOrThrow("number"));
-                Log.d("이름 나오나?", name);
+                //Log.d("이름 나오나?", name);
 
                 PhoneBookItemDTO pbItem = new PhoneBookItemDTO();
                 pbItem.setId(id);

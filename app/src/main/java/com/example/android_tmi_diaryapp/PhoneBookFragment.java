@@ -34,11 +34,6 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
     private PhoneBookRVAdapter mPhoneBookRVAdapter;
     private ArrayList<PhoneBookItemDTO> mPhoneBookItems;
     private PhoneBookDBActivity mPhoneBookDBActivity;
-    private Context mPhonebookContext;
-    private String mPbName;
-
-
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
@@ -59,12 +54,11 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
             public void onClick(View v) {
                 String name = pbName.getText().toString();
 
-                Log.d("이름 전달", name);
+                //Log.d("이름 전달", name);
                 mPhoneBookDBActivity.SearchPhoneBook(name);
                 loadSearchDB(name);
             }
         });
-
 
         rootview.findViewById(R.id.pb_add_button).setOnClickListener(new View.OnClickListener() {
             private PhoneBookDetailFragment mPhoneBookDetailFragment = new PhoneBookDetailFragment();
@@ -85,12 +79,6 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         return rootview;
     }
 
-
-    public void onClickHandler(){
-
-    }
-
-
     @Override
     public void onItemClick(PhoneBookItemDTO phoneBookItemDTO) {
         String call = phoneBookItemDTO.getNumber();
@@ -108,15 +96,12 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
 //        item.setNumber("010-3425-3513");
 //        addItem(item);
 
-
         loadRecentDB();
     }
 
-    public void addItem(PhoneBookItemDTO _item){
-        mPhoneBookItems.add(0, _item);
-    }
-
-
+//    public void addItem(PhoneBookItemDTO _item){
+//        mPhoneBookItems.add(0, _item);
+//    }
 
     private void loadRecentDB(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -127,7 +112,6 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         mPhoneBookRVView.setAdapter(mPhoneBookRVAdapter);
     }
 
-
     private void loadSearchDB(String name){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mPhoneBookRVView.setLayoutManager(layoutManager);
@@ -136,20 +120,4 @@ public class PhoneBookFragment extends Fragment implements PhoneBookRVAdapter.It
         mPhoneBookRVView.setHasFixedSize(true);
         mPhoneBookRVView.setAdapter(mPhoneBookRVAdapter);
     }
-//
-//    @Override
-//    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//    }
-//
-//    @Override
-//    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//        //mPhoneBookRVAdapter.getFilter().filter(charSequence);
-//    }
-//
-//    @Override
-//    public void afterTextChanged(Editable editable) {
-//
-//    }
-
 }

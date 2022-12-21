@@ -73,8 +73,6 @@ public class MemoDBActivity extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM MemoList WHERE id = '"+ _id + "'");
     }
-
-
 }
 
 

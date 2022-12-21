@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
@@ -36,15 +35,6 @@ public class MemoRVAdapter extends RecyclerView.Adapter<MemoRVAdapter.ViewHolder
         return new ViewHolder(holder);
     }
 
-//
-//    @NonNull
-//    @Override
-//    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-//        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-//        View itemView = inflater.inflate(R.layout.rv_memo, viewGroup, false);
-//        return new ViewHolder(itemView);
-//    }
-
 
     public void onBindViewHolder(MemoRVAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
         viewHolder.onBind(mMemoItemDTO.get(position));
@@ -55,7 +45,6 @@ public class MemoRVAdapter extends RecyclerView.Adapter<MemoRVAdapter.ViewHolder
                 clickListener.onItemClick(mMemoItemDTO.get(position));
             }
         });
-
     }
 
     public int getItemCount() {

@@ -81,8 +81,6 @@ public class MemoDetailFragment extends Fragment {
                         .commitAllowingStateLoss();
             }
         });
-
-
         return rootview;
     }
 
@@ -97,7 +95,6 @@ public class MemoDetailFragment extends Fragment {
         mDBActivity = new MemoDBActivity(getContext());
         mMemoItems = new ArrayList<>();
     }
-
 
     public void hideBottomNavigaion(Boolean isNavigationHide) {
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.menu_bottom_navigation);

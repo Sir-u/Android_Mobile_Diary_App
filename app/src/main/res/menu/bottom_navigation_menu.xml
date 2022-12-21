@@ -7,7 +7,7 @@
     <item
         android:id="@+id/menu_phoneBook"
         android:icon="@drawable/ic_baseline_local_phone_24"
-        android:title="Diary"/>
+        android:title="PhoneBook"/>
     <item
         android:id="@+id/menu_memo"
         android:icon="@drawable/ic_baseline_sticky_note_2_24"

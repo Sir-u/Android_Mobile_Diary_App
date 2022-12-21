@@ -1,6 +1,11 @@
 package com.example.android_tmi_diaryapp;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +27,14 @@ public class MemoFragment extends Fragment implements MemoRVAdapter.ItemClickLis
     private MemoRVAdapter mMemoRVAdapter;
     private ArrayList<MemoItemDTO> mMemoItems;
     private MemoDBActivity memoDBActivity;
-    //private String memoTitle;
+    //FIXME
+    private Context memoContext;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+
     }
 
     @Nullable
@@ -64,7 +72,6 @@ public class MemoFragment extends Fragment implements MemoRVAdapter.ItemClickLis
 //        item.setTitle("안드로이드 시험");
 //        item.setContent("안드로이드 기말 시험");
 //        addItem(item);
-
 
         loadRecentDB();
     }

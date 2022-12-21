@@ -69,8 +69,6 @@ public class PhoneBookDetailFragment extends Fragment {
         return rootview;
     }
 
-
-
     private void setInit() {
         mPhoneBookDBActivity = new PhoneBookDBActivity(getContext());
         mPhoneBookItemDTO = new ArrayList<>();

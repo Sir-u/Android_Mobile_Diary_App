@@ -25,8 +25,6 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
     private Context mPhonebookContext;
     private PhoneBookDBActivity phoneBookDBActivity;
     private ItemClickListener clickListener;
-    ArrayList<PhoneBookItemDTO> unFilteredlist;
-    ArrayList<PhoneBookItemDTO> filteredList;
 
     public PhoneBookRVAdapter(ArrayList<PhoneBookItemDTO> phoneBookItemDTO, Context phonebookContext, ItemClickListener clickListener){
         this.mPhoneBookItemDTO = phoneBookItemDTO;
@@ -39,12 +37,6 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
         View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_phonebook, parent, false);
         return new PhoneBookRVAdapter.ViewHolder(holder);
     }
-
-//    @Override
-//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.nameView.setText(mPhoneBookItemDTO.get(position).getName());
-//        holder.numberView.setText(mPhoneBookItemDTO.get(position).getNumber());
-//    }
 
     public void onBindViewHolder(PhoneBookRVAdapter.ViewHolder ViewHolder, @SuppressLint("RecyclerView") int position) {
         ViewHolder.onBind(mPhoneBookItemDTO.get(position));
@@ -61,41 +53,6 @@ public class PhoneBookRVAdapter extends RecyclerView.Adapter<PhoneBookRVAdapter.
     public int getItemCount() {
         return mPhoneBookItemDTO.size();
     }
-
-//
-//    // TODO
-//    // FIXME
-//    @Override
-//    public Filter getFilter() {
-//        return new Filter() {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence constraint) {
-//                String charString = constraint.toString();
-//                if(charString.isEmpty()) {
-//                    filteredList = unFilteredlist;
-//                } else {
-//                    ArrayList<PhoneBookItemDTO> filteringList = new ArrayList<>();
-//                    // FiXME
-//                    for(PhoneBookItemDTO name : unFilteredlist) {  //.toString().split(",")
-//                        filteringList.add(name);
-////                        if(name.toLowerCase().contains(charString.toLowerCase())) {
-////                            filteringList.add(name);
-////                        }
-//                    }
-//                    filteredList = filteringList;
-//                }
-//                FilterResults filterResults = new FilterResults();
-//                filterResults.values = filteredList;
-//                return filterResults;
-//            }
-//
-//            @Override
-//            protected void publishResults(CharSequence charSequence, FilterResults results) {
-//                mPhoneBookItemDTO = (ArrayList<PhoneBookItemDTO>)results.values;
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameView;

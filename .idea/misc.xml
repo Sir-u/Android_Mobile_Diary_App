@@ -52,13 +52,13 @@
         <entry key="app/src/main/res/layout/fragment_memo_detail.xml" value="0.3397312859884837" />
         <entry key="app/src/main/res/layout/fragment_memo_sample.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_phonebook.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_phonebook_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_phonebook_detail.xml" value="0.404541015625" />
         <entry key="app/src/main/res/layout/memo_activity.xml" value="0.5260786433350352" />
         <entry key="app/src/main/res/layout/rv_diary.xml" value="0.24521433512369795" />
         <entry key="app/src/main/res/layout/rv_memo.xml" value="0.2033898305084746" />
         <entry key="app/src/main/res/layout/rv_phonebook.xml" value="0.27169811320754716" />
         <entry key="app/src/main/res/layout/rv_phonebooktest.xml" value="0.29508611955420466" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
