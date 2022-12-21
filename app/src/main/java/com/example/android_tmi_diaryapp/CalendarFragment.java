@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -24,6 +27,7 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
     private CalendarDatabaseHelper mDBHelper;
     private CalendarView mcalendarView;
     private String mselectedDate;
+    private EditText mSearchTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
 
         mcalendarView = (CalendarView)rootview.findViewById(R.id.calendarView);
         mCalendarRVView = rootview.findViewById(R.id.rv_calendar_container);
+        mSearchTitle = rootview.findViewById(R.id.edit_search);
 
         setInit();
 
@@ -70,6 +75,13 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
             }
         });
 
+        rootview.findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SearchDB();
+            }
+        });
+
         return rootview;
     }
 
@@ -80,11 +92,19 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
         loadRecentDB();
     }
 
-    private void loadRecentDB() {
+    private void loadRecentDB() {// 저장되어있던 db를 가져온다.
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mCalendarRVView.setLayoutManager(layoutManager);
-        // 저장되어있던 db를 가져온다.
         mCalendarItems = mDBHelper.getCalendarItems(mselectedDate);
+        mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate, this);
+        mCalendarRVView.setHasFixedSize(true);
+        mCalendarRVView.setAdapter(mCalanderRVAdapter);
+    }
+
+    private void SearchDB() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mCalendarRVView.setLayoutManager(layoutManager);
+        mCalendarItems = mDBHelper.searchCalendarItems(mSearchTitle.getText().toString(), mselectedDate);
         mCalanderRVAdapter = new CalendarRVAdapter(mCalendarItems, getContext(), mselectedDate, this);
         mCalendarRVView.setHasFixedSize(true);
         mCalendarRVView.setAdapter(mCalanderRVAdapter);

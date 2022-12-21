@@ -60,6 +60,32 @@ public class CalendarDatabaseHelper extends SQLiteOpenHelper {
         return calendarItems;
     }
 
+    public ArrayList<CalendarItemDTO> searchCalendarItems(String searchTitle, String selectedDate) {
+        ArrayList<CalendarItemDTO> calendarItems = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM CalendarList WHERE title='" + searchTitle + "' AND date='" + selectedDate + "'  ORDER BY id DESC", null);
+        if(cursor.getCount() != 0) {
+            // 조회된 데이터가 있을때 내부 수정
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
+                String content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+
+                CalendarItemDTO calendarItemDTO = new CalendarItemDTO();
+                calendarItemDTO.setId(id);
+                calendarItemDTO.setTitle(title);
+                calendarItemDTO.setContent(content);
+                calendarItemDTO.setDate(date);
+                calendarItems.add(calendarItemDTO);
+            }
+        }
+        cursor.close();
+
+        return calendarItems;
+    }
+
     // INSERT 문 (할일 목록을 db에 넣는다.)
     public void InsertCalendar(String _title, String _content, String _date){
         SQLiteDatabase db = getWritableDatabase();
