@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class CalendarDetailFragment extends Fragment {
     private ArrayList<CalendarItemDTO> mCalendarItems;
-    private DatabaseHelper mDBHelper;
+    private CalendarDatabaseHelper mDBHelper;
     private String mselectedDate;
     private String mtitle;
     private String mcontent;
@@ -59,6 +59,7 @@ public class CalendarDetailFragment extends Fragment {
 
         rootview.findViewById(R.id.btn_saveBack).setOnClickListener(new View.OnClickListener() {
 
+            @Override
             public void onClick(View v) {
 
                 if(isExist == false){
@@ -72,7 +73,6 @@ public class CalendarDetailFragment extends Fragment {
                         .remove(CalendarDetailFragment.this)
                         .commitAllowingStateLoss();
             }
-
         });
 
         return rootview;
@@ -86,7 +86,7 @@ public class CalendarDetailFragment extends Fragment {
     }
 
     private void setInit() {
-        mDBHelper = new DatabaseHelper(getContext());
+        mDBHelper = new CalendarDatabaseHelper(getContext());
         mCalendarItems = new ArrayList<>();
     }
 

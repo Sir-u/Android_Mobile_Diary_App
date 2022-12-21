@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_diary"
+        android:id="@+id/menu_calendar"
         android:icon="@drawable/ic_baseline_event_note_24"
         android:title="Calendar"/>
     <item
         android:id="@+id/menu_phoneBook"
         android:icon="@drawable/ic_baseline_local_phone_24"
-        android:title="Diary"/>
+        android:title="PhoneBook"/>
     <item
         android:id="@+id/menu_memo"
         android:icon="@drawable/ic_baseline_sticky_note_2_24"

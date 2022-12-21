@@ -7,14 +7,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.android_tmi_diaryapp.DTO.MemoItemDTO;
+
 import java.util.ArrayList;
 
-public class MemoActivity extends SQLiteOpenHelper {
+public class MemoDBActivity extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Memo.db";
 
-    public MemoActivity(@Nullable Context context)
+    public MemoDBActivity(@Nullable Context context)
     {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -31,10 +33,10 @@ public class MemoActivity extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<MemoItem> getMemoItem(){
-        ArrayList<MemoItem> memoItems = new ArrayList<>();
+    public ArrayList<MemoItemDTO> getMemoItem(){
+        ArrayList<MemoItemDTO> memoItems = new ArrayList<>();
 
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM MemoList ORDER BY id DESC", null);
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
@@ -42,27 +44,28 @@ public class MemoActivity extends SQLiteOpenHelper {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
 
-                MemoItem memoItem = new MemoItem();
-                memoItem.setId(id);
-                memoItem.setTitle(title);
-                memoItem.setContent(content);
+                MemoItemDTO memoItemDTO = new MemoItemDTO();
+                memoItemDTO.setId(id);
+                memoItemDTO.setTitle(title);
+                memoItemDTO.setContent(content);
+                memoItems.add(memoItemDTO);
             }
         }
-
         cursor.close();
+
         return memoItems;
     }
 
     // INSERT 문
     public void InsertMemo(String _title, String _content){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO MemoList (name, number) VALUES('" + _title + "', '"+ _content +"');");
+        db.execSQL("INSERT INTO MemoList (title, content) VALUES('" + _title + "', '" + _content +"');");
     }
 
     // UPDATE 문
     public void UpdateMemo(String _title, String _content, int _id){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("UPDATE MemoList SET title='" + _title +"', content='"+ _content +"' WHERE id='" + _id + "'");
+        db.execSQL("UPDATE MemoList SET title='" + _title +"', content='" + _content +"' WHERE id='" + _id + "'");
     }
 
     // DELETE 문

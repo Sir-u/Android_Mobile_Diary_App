@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private CalendarFragment fragmentCalendar = new CalendarFragment();
-    private FlushhFragment fragmentFlush = new FlushhFragment();
+    private FlushFragment fragmentFlush = new FlushFragment();
+    private MemoFragment fragmentMemo = new MemoFragment();
+    private PhoneBookFragment fragmentPhoneBook = new PhoneBookFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         OnCalendar();
 
+
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_conainer, fragmentCalendar).commitAllowingStateLoss();
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
@@ -36,15 +40,27 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
 
             switch (menuItem.getItemId()) {
-                case R.id.menu_diary:
+                case R.id.menu_calendar:
                     transaction
                             .replace(R.id.fragment_conainer, fragmentCalendar, "fragmentCalendar")
                             .commitAllowingStateLoss();
                     break;
                 case R.id.menu_flush:
                     transaction
-                        .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
-                        .commitAllowingStateLoss();
+                            .replace(R.id.fragment_conainer, fragmentFlush, "fragmentFlush")
+                            .commitAllowingStateLoss();
+                    break;
+
+                case R.id.menu_phoneBook:
+                    transaction
+                            .replace(R.id.fragment_conainer, fragmentPhoneBook, "fragmentPhoneBook")
+                            .commitAllowingStateLoss();
+                    break;
+
+                case R.id.menu_memo:
+                    transaction
+                            .replace(R.id.fragment_conainer, fragmentMemo, "fragmentMemo")
+                            .commitAllowingStateLoss();
                     break;
             }
             return true;
@@ -55,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_conainer, fragmentCalendar)
+                .commitAllowingStateLoss();
+    }
+
+    public void OnMemo() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, fragmentMemo)
+                .commitAllowingStateLoss();
+    }
+
+    public void OnPhoneBook() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_conainer, fragmentPhoneBook)
                 .commitAllowingStateLoss();
     }
 }

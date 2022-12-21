@@ -11,12 +11,12 @@ import com.example.android_tmi_diaryapp.DTO.CalendarItemDTO;
 
 import java.util.ArrayList;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class CalendarDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "DiaryApp.db";
 
-    public DatabaseHelper(@Nullable Context context) {
+    public CalendarDatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

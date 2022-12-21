@@ -1,13 +1,11 @@
-package com.example.android_tmi_diaryapp;
+package com.example.android_tmi_diaryapp.DTO;
 
-public class MemoItem {
+public class MemoItemDTO {
     private String title;
     private String content;
     private int id;
 
-    public MemoItem()
-    {
-    }
+    public MemoItemDTO() {}
 
     public String getTitle() {
         return title;
