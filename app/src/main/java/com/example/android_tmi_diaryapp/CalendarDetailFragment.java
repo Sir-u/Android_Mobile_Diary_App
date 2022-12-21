@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class CalendarDetailFragment extends Fragment {
     private ArrayList<CalendarItemDTO> mCalendarItems;
-    private DatabaseHelper mDBHelper;
+    private CalendarDatabaseHelper mDBHelper;
     private String mselectedDate;
     private String mtitle;
     private String mcontent;
@@ -86,7 +86,7 @@ public class CalendarDetailFragment extends Fragment {
     }
 
     private void setInit() {
-        mDBHelper = new DatabaseHelper(getContext());
+        mDBHelper = new CalendarDatabaseHelper(getContext());
         mCalendarItems = new ArrayList<>();
     }
 

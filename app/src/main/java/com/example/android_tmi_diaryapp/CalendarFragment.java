@@ -21,7 +21,7 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
     private RecyclerView mCalendarRVView;
     private CalendarRVAdapter mCalanderRVAdapter;
     private ArrayList<CalendarItemDTO> mCalendarItems;
-    private DatabaseHelper mDBHelper;
+    private CalendarDatabaseHelper mDBHelper;
     private CalendarView mcalendarView;
     private String mselectedDate;
 
@@ -74,15 +74,8 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
     }
 
     private void setInit() {
-        mDBHelper = new DatabaseHelper(getContext());
+        mDBHelper = new CalendarDatabaseHelper(getContext());
         mCalendarItems = new ArrayList<>();
-
-//        mDBHelper.InsertCalendar("안드로이드 시험", "안드로이드 기말 시험", mselectedDate); // DB에 인서트
-//        CalendarItemDTO item = new CalendarItemDTO();
-//        item.setTitle("안드로이드 시험");
-//        item.setContent("안드로이드 기말 시험");
-//        item.setDate(mselectedDate);
-//        addItem(item);
 
         loadRecentDB();
     }
@@ -96,10 +89,6 @@ public class CalendarFragment extends Fragment implements CalendarRVAdapter.Item
         mCalendarRVView.setHasFixedSize(true);
         mCalendarRVView.setAdapter(mCalanderRVAdapter);
     }
-
-//    public void addItem(CalendarItemDTO _item){
-//        mCalendarItems.add(0, _item);
-//    }
 
 
     @Override

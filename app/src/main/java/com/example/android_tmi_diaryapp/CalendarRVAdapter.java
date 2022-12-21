@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class CalendarRVAdapter extends RecyclerView.Adapter<CalendarRVAdapter.ViewHolder> {
     private ArrayList<CalendarItemDTO> mCalendarItemDTO;
     private Context mcontext;
-    private DatabaseHelper mDBHelper;
+    private CalendarDatabaseHelper mDBHelper;
     private String mselectedDate;
     private ItemClickListener clickListener;
 
@@ -27,7 +27,7 @@ public class CalendarRVAdapter extends RecyclerView.Adapter<CalendarRVAdapter.Vi
         this.mCalendarItemDTO = mCalendarItemDTO;
         this.mcontext = mcontext;
         this.clickListener = clickListener;
-        mDBHelper = new DatabaseHelper(mcontext);
+        mDBHelper = new CalendarDatabaseHelper(mcontext);
         mselectedDate = selectedDate;
     }
 
