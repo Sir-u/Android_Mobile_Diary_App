@@ -202,6 +202,7 @@ Figma: https://www.figma.com/file/PVVSbSKDYUZ4vMX5CcxTjk/TMI-Project?node-id=0%3
     <details>
     <summary><b> java 파일 </b></summary>
     <div markdown="1">
+        
     - FlushFragment.java
 
     </div>
@@ -210,8 +211,10 @@ Figma: https://www.figma.com/file/PVVSbSKDYUZ4vMX5CcxTjk/TMI-Project?node-id=0%3
     <details>
     <summary><b> xml 파일 </b></summary>
     <div markdown="1">
+        
     - fragment_flush.xml
     - res > anim> alpha.xml
+        
     </div>
     </details>
     
