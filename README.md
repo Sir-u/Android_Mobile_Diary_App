@@ -124,6 +124,7 @@ Figma: https://www.figma.com/file/PVVSbSKDYUZ4vMX5CcxTjk/TMI-Project?node-id=0%3
     <details>
     <summary><b> java 파일 </b></summary>
     <div markdown="1">
+    
     - PhoneBookFragment.java
     - PhoneBookRVAdapter.java
     - PhoneBookDetailFragment.java
@@ -165,6 +166,7 @@ Figma: https://www.figma.com/file/PVVSbSKDYUZ4vMX5CcxTjk/TMI-Project?node-id=0%3
     <details>
     <summary><b> java 파일 </b></summary>
     <div markdown="1">
+    
     - MemoFragment.java
     - MemoRVAdapter.java
     - MemoDetailActivity.java
@@ -178,9 +180,11 @@ Figma: https://www.figma.com/file/PVVSbSKDYUZ4vMX5CcxTjk/TMI-Project?node-id=0%3
     <details>
     <summary><b> xml 파일 </b></summary>
     <div markdown="1">
+    
     - fragment_memo.xml
     - fragment_memo_detail.xml
     - rv_memo.xml
+    
     </div>
     </details>
     
